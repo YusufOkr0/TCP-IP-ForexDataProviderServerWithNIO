@@ -29,7 +29,7 @@ public class FXDataServer {
         this.subscriptions = subscriptions;
         this.authRepository = auth_repository;
 
-        this.authenticatedClients = new HashMap<>(); // Only one thread is going to access this set? Check later!!
+        this.authenticatedClients = new HashMap<>(); !
         this.clientsStringBuilders = new HashMap<>();
     }
 
