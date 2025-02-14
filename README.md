@@ -4,19 +4,20 @@
 The FX Data Server is a Java-based NIO (Non-blocking I/O) server that provides real-time currency pair data. It is designed for high performance and scalability, enabling multiple clients to connect, authenticate, and subscribe to currency updates efficiently.
 
 ### Key Features:
-- **Concurrent Connections:** Non-blocking I/O supports multiple clients simultaneously.
-- **Real-Time Updates:** Delivers live bid/ask values to subscribed clients.
-- **Secure Authentication:** Validates users with a credentials repository.
-- **Flexible Subscriptions:** Supports subscribing and unsubscribing to currency pairs.
-- **Robust Error Handling:** Provides clear feedback for invalid commands.
+- **Concurrent Connections:** Supports multiple clients with non-blocking I/O.
+- **Live Broadcasts:** Sends continuous real-time bid/ask updates to subscribers.
+- **Secure Authentication:** Validates users using configured credentials.
+- **Customizable:** Settings are easily configurable via `application.properties`.
+- **Flexible Subscriptions:** Clients can subscribe or unsubscribe from currency pairs.
 
 ---
 
 ## Project Structure
 ```
 TCP-IP-ForexDataProviderServerWithNIO
-└── src/main/java/com/toyota
+└── src/main/java/com/Forex
     ├── broadcast
+    │   └── FXDataPublisher.java
     ├── config
     ├── entity
     └── server
@@ -34,10 +35,9 @@ TCP-IP-ForexDataProviderServerWithNIO
 git clone https://github.com/YusufOkr0/TCP-IP-ForexDataProviderServerWithNIO.git
 cd TCP-IP-ForexDataProviderServerWithNIO
 ```
-
-### 2. Build and Start the Server:
-- Modify src/main/resources/application.properties to adjust settings:
-```bash
+### 2. Configure Server Properties:
+Modify `src/main/resources/application.properties`:
+```properties
 server.port=8081
 currency.pairs=TCP_USDTRY,TCP_EURUSD,TCP_GBPUSD
 TCP_USDTRY.bid=33.90
@@ -50,13 +50,11 @@ publish.frequency=1000
 
 user.credentials=user|pass,admin|admin
 ```
-
 ### 3. Build and Start the Server:
 ```bash
 mvn clean package
 java -jar target/FXDataServer.jar
 ```
-
 ---
 
 ## How to Interact via Telnet
@@ -75,6 +73,15 @@ connect|admin|admin
 subscribe|TCP_USDTRY
 ```
 **Response:** `SUCCESS|Subscribed to currency pair: TCP_USDTRY`
+
+### Live Broadcast Example from `FXDataPublisher`:
+The server will broadcast updated rates based on real-time fluctuations:
+```
+TCP_USDTRY|33.9578638183782944|34.6578638183782944|2025-02-14 16:10:18.8470144
+TCP_USDTRY|33.9898486584141338|34.6898486584141338|2025-02-14 16:10:19.8626141
+TCP_USDTRY|33.9667324048896522|34.6667324048896522|2025-02-14 16:10:20.8640348
+```
+---
 
 ### 4. Unsubscribe:
 ```bash
@@ -98,9 +105,9 @@ disconnect|admin|admin
 ---
 
 ## Notes
-- Commands should end with a newline character (`\n`).
-- The server auto-disconnects inactive clients.
-- Supports multiple simultaneous client connections.
+- All commands should end with a newline character (`\n`).
+- The server automatically disconnects inactive clients.
+- Multiple clients can connect and subscribe simultaneously.
 
 ---
 
