@@ -1,6 +1,6 @@
-package com.toyota.broadcast;
+package com.Forex.broadcast;
 
-import com.toyota.entity.Rate;
+import com.Forex.entity.Rate;
 
 import java.io.IOException;
 import java.math.BigDecimal;

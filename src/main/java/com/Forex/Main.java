@@ -1,9 +1,9 @@
-package com.toyota;
+package com.Forex;
 
-import com.toyota.broadcast.FXDataPublisher;
-import com.toyota.config.ConfigLoader;
-import com.toyota.entity.Rate;
-import com.toyota.server.FXDataServer;
+import com.Forex.broadcast.FXDataPublisher;
+import com.Forex.config.ConfigLoader;
+import com.Forex.entity.Rate;
+import com.Forex.server.FXDataServer;
 
 import java.math.BigDecimal;
 import java.nio.channels.SocketChannel;

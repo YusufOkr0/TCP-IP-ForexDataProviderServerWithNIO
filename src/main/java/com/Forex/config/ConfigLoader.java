@@ -1,4 +1,4 @@
-package com.toyota.config;
+package com.Forex.config;
 
 import java.io.FileInputStream;
 import java.io.IOException;

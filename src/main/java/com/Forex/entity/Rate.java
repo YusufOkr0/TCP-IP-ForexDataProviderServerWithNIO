@@ -1,4 +1,4 @@
-package com.toyota.entity;
+package com.Forex.entity;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
