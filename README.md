@@ -36,6 +36,22 @@ cd TCP-IP-ForexDataProviderServerWithNIO
 ```
 
 ### 2. Build and Start the Server:
+- Modify src/main/resources/application.properties to adjust settings:
+```bash
+server.port=8081
+currency.pairs=TCP_USDTRY,TCP_EURUSD,TCP_GBPUSD
+TCP_USDTRY.bid=33.90
+TCP_USDTRY.ask=34.60
+TCP_EURUSD.bid=1.0
+TCP_EURUSD.ask=1.2
+TCP_GBPUSD.bid=2.0
+TCP_GBPUSD.ask=2.4
+publish.frequency=1000
+
+user.credentials=user|pass,admin|admin
+```
+
+### 3. Build and Start the Server:
 ```bash
 mvn clean package
 java -jar target/FXDataServer.jar
